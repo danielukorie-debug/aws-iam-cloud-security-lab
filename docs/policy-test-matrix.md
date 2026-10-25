@@ -58,3 +58,18 @@ and CloudTrail investigation must be recorded separately when performed.
 - Authorization simulation results for selected Allow and Deny cases
 - Screenshots of genuine test results, with account details and
   sensitive information excluded where possible
+
+
+## Observed Authorization Simulation Results
+
+The following decisions were observed when AWS IAM simulate-custom-policy evaluated the example S3 read policy. These were simulations, not live S3 requests.
+
+| Action | Resource path | Context supplied | Observed decision |
+|---|---|---|---|
+| `s3:GetObject` | `reports/demo.txt` | None | `allowed` |
+| `s3:GetObject` | `private/demo.txt` | None | `implicitDeny` |
+| `s3:PutObject` | `reports/demo.txt` | None | `implicitDeny` |
+| `s3:ListBucket` | Bucket | `s3:prefix=reports/` | `allowed` |
+| `s3:ListBucket` | Bucket | `s3:prefix=private/` | `implicitDeny` |
+
+The simulator reported missing `s3:prefix` context on some object-action tests. That condition belongs to the ListBucket statement. These outcomes demonstrate the evaluated policy behavior but do not prove how every applicable policy in a live AWS account would affect access.

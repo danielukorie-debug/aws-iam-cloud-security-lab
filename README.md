@@ -183,3 +183,12 @@ See [the validation report](docs/policy-validation-results.md) for the five poli
 ![AWS IAM policy validation results](docs/images/iam-policy-validation.png)
 
 The screenshot records the observed validation output. It does not establish that the example policies were deployed or that live authorization tests have passed.
+
+
+## Authorization Simulation Evidence
+
+The screenshot below records the five observed authorization simulations for the S3 reports policy.
+
+![AWS IAM authorization simulation results](docs/images/iam-authorization-simulations.png)
+
+The results are simulated decisions against example resource ARNs. They do not establish that an S3 bucket exists or that live requests have been tested.
