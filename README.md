@@ -192,3 +192,8 @@ The screenshot below records the five observed authorization simulations for the
 ![AWS IAM authorization simulation results](docs/images/iam-authorization-simulations.png)
 
 The results are simulated decisions against example resource ARNs. They do not establish that an S3 bucket exists or that live requests have been tested.
+
+
+## IAM Roles and AWS STS
+
+See the [IAM roles and STS guide](docs/iam-roles-and-sts.md) for the caller permissions, role trust, temporary credentials workflow, and security considerations.
