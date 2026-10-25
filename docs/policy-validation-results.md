@@ -56,3 +56,16 @@ The validation results do not establish that:
 
 Never commit AWS credentials, access tokens, private keys, live secret
 values, Terraform state, or unredacted security evidence.
+
+
+## GitHub Actions OIDC Trust Policy Validation
+
+Policy: `policies/trust/github-actions-oidc-example.json`
+
+Validation used `RESOURCE_POLICY` and `AWS::IAM::AssumeRolePolicyDocument` in `us-east-1`.
+
+Observed finding: `SUGGESTION` — `CONFIRM_AUDIENCE_CLAIM_TYPE`.
+
+AWS noted that the audience claim is single-valued and should not use a condition-set qualifier. The example uses `StringEquals` directly for the audience claim, without a qualifier. The suggestion is recorded for review; it did not require adding a qualifier.
+
+The subject condition includes owner-ID and repository-ID placeholders. Before live use, verify the exact subject claim emitted by the repository and replace the placeholders with the corresponding verified IDs. This example has not been deployed, and a live OIDC role-assumption flow has not been tested.

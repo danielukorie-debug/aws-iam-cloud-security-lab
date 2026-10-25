@@ -1,0 +1,19 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowOnlyThisRepositoryMainBranch",
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::111122223333:oidc-provider/token.actions.githubusercontent.com"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+          "token.actions.githubusercontent.com:sub": "repo:danielukorie-debug@REPLACE_WITH_OWNER_ID/aws-iam-cloud-security-lab@REPLACE_WITH_REPOSITORY_ID:ref:refs/heads/main"
+        }
+      }
+    }
+  ]
+}

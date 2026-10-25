@@ -197,3 +197,17 @@ The results are simulated decisions against example resource ARNs. They do not e
 ## IAM Roles and AWS STS
 
 See the [IAM roles and STS guide](docs/iam-roles-and-sts.md) for the caller permissions, role trust, temporary credentials workflow, and security considerations.
+
+
+## Authentication and MFA
+
+See the [authentication methods guide](docs/authentication-methods.md) for workforce authentication, MFA, SAML, OIDC, STS, and request signing.
+
+
+## GitHub Actions OIDC Validation Evidence
+
+The screenshot below records the observed IAM Access Analyzer result for the example GitHub Actions OIDC trust policy. The remaining suggestion is documented in [the validation report](docs/policy-validation-results.md).
+
+![GitHub Actions OIDC policy validation](docs/images/github-oidc-policy-validation.png)
+
+The policy uses placeholder owner and repository IDs. It has not been deployed, and live federation has not been tested.
