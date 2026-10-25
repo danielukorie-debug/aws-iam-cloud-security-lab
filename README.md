@@ -225,3 +225,46 @@ This screenshot records the observed IAM Access Analyzer findings for the metada
 ![Secrets Manager and KMS policy validation](docs/images/secrets-kms-policy-validation.png)
 
 No live secrets, KMS keys, or AWS identities were created as part of this validation.
+
+
+## Consolidated Security Architecture
+
+This diagram summarizes the intended security design represented by the learning modules. It is an architectural overview, not proof that all components have been deployed or integrated in a live AWS account.
+
+```mermaid
+flowchart TD
+    Human[Human administrator or developer]
+    IdP[Approved identity provider or IAM Identity Center]
+    MFA[MFA and workforce sign-in controls]
+    Workload[GitHub Actions workload]
+    OIDC[GitHub OIDC federation]
+    STS[AWS STS temporary role session]
+    IAM[IAM policy evaluation and applicable guardrails]
+    S3[Approved S3 resources and reports prefix]
+    SM[Secrets Manager]
+    KMS[AWS KMS encryption and authorized decryption]
+    CT[CloudTrail management-event history]
+    Data[Optional data-event logging when configured]
+    Audit[Security audit and evidence review]
+
+    Human --> IdP --> MFA --> STS
+    Workload --> OIDC --> STS
+    STS --> IAM
+    IAM --> S3
+    IAM --> SM
+    SM --> KMS
+    IAM -. relevant API activity .-> CT
+    SM -. relevant management activity .-> CT
+    KMS -. relevant management activity .-> CT
+    S3 -. object-level activity when configured .-> Data
+    Data --> Audit
+    CT --> Audit
+```
+
+### Architecture Scope
+
+- Human and workload authentication use different identity flows.
+- Trust policies control who may assume a role; permission policies control what the role may do.
+- Secrets Manager protects secret values using AWS KMS encryption.
+- CloudTrail Event history provides regional management-event history; additional data-event collection requires appropriate configuration.
+- The repository contains examples and simulated authorization results. Do not interpret the diagram as proof of live deployment, successful federation, or live secret retrieval.
