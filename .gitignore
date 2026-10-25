@@ -1,0 +1,27 @@
+# Terraform local state and working files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+*.tfplan
+crash.log
+crash.*.log
+
+# Credentials and secrets
+.env
+.env.*
+*.pem
+*.key
+*.secret
+secrets.json
+credentials
+credentials.*
+
+# Editor and temporary files
+*.swp
+*.swo
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
