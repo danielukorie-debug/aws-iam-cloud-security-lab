@@ -211,3 +211,17 @@ The screenshot below records the observed IAM Access Analyzer result for the exa
 ![GitHub Actions OIDC policy validation](docs/images/github-oidc-policy-validation.png)
 
 The policy uses placeholder owner and repository IDs. It has not been deployed, and live federation has not been tested.
+
+
+## Secrets Manager and Encryption
+
+See the [Secrets Manager and encryption guide](docs/secrets-manager-and-encryption.md) for least-privilege secret access, KMS encryption, rotation concepts, and separation of duties.
+
+
+## Secrets Manager Policy Validation Evidence
+
+This screenshot records the observed IAM Access Analyzer findings for the metadata-reviewer and customer-managed KMS example policies.
+
+![Secrets Manager and KMS policy validation](docs/images/secrets-kms-policy-validation.png)
+
+No live secrets, KMS keys, or AWS identities were created as part of this validation.

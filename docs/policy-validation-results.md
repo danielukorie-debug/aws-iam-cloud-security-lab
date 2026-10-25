@@ -69,3 +69,15 @@ Observed finding: `SUGGESTION` — `CONFIRM_AUDIENCE_CLAIM_TYPE`.
 AWS noted that the audience claim is single-valued and should not use a condition-set qualifier. The example uses `StringEquals` directly for the audience claim, without a qualifier. The suggestion is recorded for review; it did not require adding a qualifier.
 
 The subject condition includes owner-ID and repository-ID placeholders. Before live use, verify the exact subject claim emitted by the repository and replace the placeholders with the corresponding verified IDs. This example has not been deployed, and a live OIDC role-assumption flow has not been tested.
+
+
+## Secrets Manager and KMS Policy Validation
+
+Two additional identity-based policy documents were validated using AWS IAM Access Analyzer in us-east-1.
+
+| Policy | Observed result |
+|---|---|
+| `policies/identity-based/secrets-metadata-reviewer.json` | No findings returned (`[]`) |
+| `policies/identity-based/secrets-consumer-cmk-example.json` | No findings returned (`[]`) |
+
+These results reflect policy validation, not live secret retrieval or KMS decryption tests. The example resource ARNs and customer-managed KMS key ID are placeholders. The key policy and applicable permissions must be reviewed before any live use.
