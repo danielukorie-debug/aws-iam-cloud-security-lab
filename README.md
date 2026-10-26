@@ -268,3 +268,11 @@ flowchart TD
 - Secrets Manager protects secret values using AWS KMS encryption.
 - CloudTrail Event history provides regional management-event history; additional data-event collection requires appropriate configuration.
 - The repository contains examples and simulated authorization results. Do not interpret the diagram as proof of live deployment, successful federation, or live secret retrieval.
+
+## CloudTrail Accountability and Audit Investigation
+
+See the [CloudTrail accountability guide](docs/cloudtrail-accountability.md) for the investigation workflow, evidence fields, and limitations.
+
+![Sanitized CloudTrail event investigation](docs/images/cloudtrail-event-investigation.png)
+
+The screenshot records the captured investigation view; it does not establish that an incident occurred or that all AWS activity was logged.
